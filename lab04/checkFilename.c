@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
     int al=0; //alphatic counter
     int low=0; //lowercase counter
     char cop[4]; //string for copying
-    char cop2[3]; //string for copying
+    char cop2[3] = ""; //string for copying
 
     if(argc!=2){
         printf("Invalid Argument Counts.\n Required 2 Arguments but only found %i.\nUsage: ./checkFilename cmpt201_<Initials>_lab<lab number>.tar.gz.\n", argc);
@@ -56,7 +56,6 @@ int main(int argc, char* argv[]){
                     token = strtok(NULL, ".");
                     strncpy(cop, token, 3);
                     strncpy(cop2, (token + 3), 2);
-                    printf("%s\n%s\n%s\n", cop, cop2, token);
 
                     if(strcmp(cop, "lab") != 0){
                         err++;

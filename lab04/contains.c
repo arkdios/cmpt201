@@ -1,11 +1,12 @@
+#Tuan Huynh
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
 int main(void){
-    char ch = "a";
-    char s[30];
+    char ch;
+    char word;
     int i = 0;
     int asc = 0; //ascii holder
     int cc=0; //counter for control characters
@@ -19,16 +20,10 @@ int main(void){
     char ret4[10];
 
     printf("Please enter a string: ");
-    scanf("%s", s);
+    ch = getchar();
     
-    if(strlen(s)>30){
-        printf("Invalid string length.\nThe input should not exceed 30 characters.\nPlease try again.\n");
-        exit(EXIT_FAILURE);
-    }
 
-    ch = getc(s);
     while(ch!="\n"){
-        s[i] = ch;
         asc = (int) ch;
         
         if(0<=asc<=31 || asc==127){
@@ -43,9 +38,8 @@ int main(void){
         else if(){
             l++;
         }
-
         i++;
-        ch = getc(s);
+        
         asc = 0;
     }
 
@@ -87,6 +81,7 @@ int main(void){
     else if(l == strlen(s)){
         printf("Contains all %c\n", ret4);
     }
+    
 
     exit(EXIT_SUCCESS);
 }
