@@ -11,6 +11,8 @@ int main(int argc, char* argv[]){
     }
 
     FILE* fp;
+    int ret;
+    
     
 
     ret = fscanf(fp, "%d", *n);
