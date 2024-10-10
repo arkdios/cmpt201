@@ -37,11 +37,24 @@ int main(int argc, char* argv[]){
     
     int ent_num; //number of entries
     int entries; //entries
+    char head[100]; // header
 
-    //I'm really sorry, I still don't understand how fscanf() works, this is the farthest I could go to make sure it does not crash
-    ret = fscanf(fp, "%d", &ent_num); //The &% you told me this afternoon crash my code whenever I tries
+    fgets(head, sizeof(head), fp);
+    ret = fscanf(fp, "%d", &ent_num);
+    printf("ret: %i\nheader: %s\nentries: %d\n", ret, head, ent_num);
     if(ret==1){
-        ret = fscanf(fp,"%d", &entries); //The "%d,%d" kept crashing my code unless one of them was removed
+        for(int i=0; i<ent_num; i++){
+        ret = fscanf(fp,"%*d, %d", &entries);
+        printf("\nret: %i\nentry: %d\n", ret, &entries);
+
+        if(ret != 2){
+            err++;
+            printf("Error %i\n", err);
+        }
+        }
+    }
+    else{
+        err++;
     }
 
     if(err != 0){
