@@ -3,13 +3,13 @@
 CC=-gcc
 CFLAGS=-Wall -std=c11
 
-checkFilename: checkFilename.c
+checkFilename: checkFilename.o
 	$(CC) $(CFLAGS) $^ -o $@ -lc
 
-checkformat: checkformat.c
+checkformat: checkformat.o
 	$(CC) $(CFLAGS) $^ -o $@ -lc
 
-contains: contains.c
+contains: contains.o
 	$(CC) $(CFLAGS) $^ -o $@ -lc
 
 %.o: %.c
@@ -21,3 +21,4 @@ clean:
 	rm -i *.o checkFilename checkformat contains
 
 package:
+	tar -czvf cmpt201_lab04_TH.tar.gz checkFilename.c checkformat.c contains.c makefile
