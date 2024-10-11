@@ -41,15 +41,12 @@ int main(int argc, char* argv[]){
 
     fgets(head, sizeof(head), fp);
     ret = fscanf(fp, "%d", &ent_num);
-    printf("ret: %i\nheader: %s\nentries: %d\n", ret, head, ent_num);
     if(ret==1){
         for(int i=0; i<ent_num; i++){
         ret = fscanf(fp,"%*d, %d", &entries);
-        printf("\nret: %i\nentry: %d\n", ret, &entries);
 
-        if(ret != 2){
+        if(ret != 1){
             err++;
-            printf("Error %i\n", err);
         }
         }
     }
