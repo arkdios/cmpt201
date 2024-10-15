@@ -4,7 +4,7 @@ CC=-gcc
 CFLAGS=-Wall -std=c11
 
 base2dec: base2dec.c
-	$(CC) $(CFLAGS) $^ -o $@ -lc
+	$(CC) $(CFLAGS) $^ -o $@ -lm
 
 lawn: lawn.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm

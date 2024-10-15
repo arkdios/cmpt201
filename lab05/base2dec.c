@@ -4,6 +4,7 @@
 #include <math.h>
 #include <ctype.h>
 #include <string.h>
+#include <math.h>
 
 int main(int argc, char* argv[]){
     //Check for argument counts
@@ -13,9 +14,10 @@ int main(int argc, char* argv[]){
     }
 
     int base = atoi(argv[2]); //base of the number
+    int num = atoi(argv[1]); //the number xb
     char alp[26][2] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-    int num; //the converted number
-    int test;
+    int con; //the converted number
+    int y = 0; //decimal form of the base b
 
     //Assigning numerical values to letters
     //First loop every single character of argv[1]
@@ -23,14 +25,18 @@ int main(int argc, char* argv[]){
         //Second loop for looping the alphabet
         for(int n = 0; n < 26; n++){
             if(strcmp(argv[1][i], alp[n]) == 0){
-                num = argv[1][i] - (31 + n);
+                con = 10 + n;
             }
+        }
+        if(num != 0){
+            y += con*pow(base, strlen(argv[1])-(i+1));
+        }
+        else{
+            y += num*pow(base, strlen(argv[1])-(i+1));
         }
     }
 
-    //split argv[1] and multiplies each of its element with argv[2]
-    for(int m = 0; m < strlen(argv[1]); m++){
-        
-    }
+    //Outputs:
+    printf("%i\n", y);
     exit(EXIT_SUCCESS);
 }
