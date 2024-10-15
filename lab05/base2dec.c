@@ -17,6 +17,7 @@ int main(int argc, char* argv[]){
     int num; //the converted number
     int test;
 
+    //Assigning numerical values to letters
     //First loop every single character of argv[1]
     for(int i = 0; i < strlen(argv[1]); i++){
         //Second loop for looping the alphabet
@@ -25,6 +26,11 @@ int main(int argc, char* argv[]){
                 num = argv[1][i] - (31 + n);
             }
         }
+    }
+
+    //split argv[1] and multiplies each of its element with argv[2]
+    for(int m = 0; m < strlen(argv[1]); m++){
+        
     }
     exit(EXIT_SUCCESS);
 }

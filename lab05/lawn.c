@@ -30,7 +30,6 @@ int main(int argc, char* argv[]){
         exit(EXIT_FAILURE);
         }
     
-    printf("No error found.\n");
     printf("ln(x) = %lf\n", ln);
 
     exit(EXIT_SUCCESS);
