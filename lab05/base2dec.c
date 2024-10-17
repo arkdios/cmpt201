@@ -1,4 +1,17 @@
-//Tuan Huynh
+/*
+# ------------------------------------------------------------------------------
+# Integrity pledge: I declare this is my code
+# ------------------------------------------------------------------------------
+# Student name: Tuan Huynh
+# Program name: base2dec.c
+# ------------------------------------------------------------------------------
+# author: Tuan Huynh
+# student ID: 3133630
+# class: CMPT 201 Section X03L
+# term: Fall 2024
+# date: Wednesday, October 16th, 2024
+#-------------------------------------------------------------------------------
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -13,15 +26,16 @@ int main(int argc, char* argv[]){
         exit(EXIT_FAILURE);
     }
 
+    //Initialize variables
     int base = atoi(argv[2]); //base of the number
-    int num = 0;//the number xb
-    int y = 0;
+    int num = 0; //the number xb
+    int y = 0; //the converted number using equation
 
-    //Assigning numerical values to letters
-    //First loop every single character of argv[1]
+    //loop to calculate the y = argv[1][0]*base + argv[1][1]*base +...
     for(int i = 0; i < strlen(argv[1]); i++){
         num = 0;
 
+        //Assigning numerical values to letters
         switch(argv[1][i]){
             case('A'):
             num = 10;
@@ -50,7 +64,7 @@ int main(int argc, char* argv[]){
             num = (int) (argv[1][i] - '0');
         }
         
-        y += num*pow(base, strlen(argv[1])-(i+1));
+        y += num*pow(base, strlen(argv[1])-(i+1)); //Calculating by addition after each loop
     }
 
     //Outputs:

@@ -1,9 +1,20 @@
-# Tuan Huynh
+# ------------------------------------------------------------------------------
+# Integrity pledge: I declare this is my code
+# ------------------------------------------------------------------------------
+# Student name: Tuan Huynh
+# Program name: makefile
+# ------------------------------------------------------------------------------
+# author: Tuan Huynh
+# student ID: 3133630
+# class: CMPT 201 Section X03L
+# term: Fall 2024
+# date: Wednesday, October 16th, 2024
+#-------------------------------------------------------------------------------
 
 CC=-gcc
 CFLAGS=-Wall -std=c11
 
-base2dec: base2dec.c
+base2dec: base2dec.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
 lawn: lawn.o
