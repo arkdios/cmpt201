@@ -18,8 +18,22 @@ int loadData(char*, int*, double*, double* );
 int main(void){
     //open file for reading
     //if this is false return 1
+    //Initialize variables
+    char fname = "data.dat";
+    int staNum; //Station number
+    double temper; //temperature 
+    double pressure; //pressure
+    
+
+
+    exit(EXIT_SUCCESS);
 }
 
-int loadData(char* filename, int*stationNum, double*pressure, double* temp){
-
+int loadData(char* filename, int* stationNumber, double* temp, double* pres){
+    FILE* fp;
+    fp = fopen(filename, "r");
+    if(fp == NULL){
+            printf("Could not open file: %s.\n", fname);
+		    exit(EXIT_FAILURE);
+        }
 }

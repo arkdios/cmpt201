@@ -19,6 +19,7 @@ stats: stats.c
 
 sec: sec.c
 	$(CC) $(CFLAGS) $^ -o $@ -lm
+
 data: data.c
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
@@ -29,7 +30,7 @@ data: data.c
 .PHONY: clean, package
 
 clean:
-	rm -i *.o sec stats
+	rm -i *.o sec stats data
 
 package:
-	tar -czvf cmpt201_lab06_TH.tar.gz sec.c stats.c makefile
+	tar -czvf cmpt201_lab06_TH.tar.gz output.txt sec.c stats.c data.c makefile
