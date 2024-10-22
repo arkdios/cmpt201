@@ -17,7 +17,6 @@
 #include <math.h>
 #include <ctype.h>
 #include <string.h>
-#include <math.h>
 
 int sec2hms(double*, int*, int*, int*);
 
@@ -40,27 +39,29 @@ int main(void){
 }
 
 int sec2hms(double* totalsec, int* hr, int* min, int*sec){
+    int total = totalsec;
     
-    if(totalsec < 0){
+    if(total < 0){
         hr = 0;
         min = 0;
-        sec = totalsec;
+        sec = (int) total;
         return 1; //failure
     }
 
-    else if(totalsec < 60 && totalsec >= 0){
+    else if(total< 60 && total >= 0){
         hr = 0;
         min = 0;
-        sec = totalsec;
+        sec = (int) total;
     }
 
-    else if(totalsec < 3600 && totalsec > 60)
+    else if(total < 3600 && totalsec > 60){
         hr = 0;
-        sec = (modf((totalsec/60), &min))*60;
+        sec = (modf((total/60), &min))*60;
+    }
 
-    else if(totalsec >= 3600){
-        min = (modf((totalsec/3600), &hr))*60;
-        sec = (modf((totalsec/60), &min))*60;
+    else if(total >= 3600){
+        min = (int) (modf((total/3600), &hr))*60;
+        sec = (int) (modf((total/60), &min))*60;
     }
 
     return 0;

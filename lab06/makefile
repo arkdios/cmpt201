@@ -33,4 +33,4 @@ clean:
 	rm -i *.o sec stats data
 
 package:
-	tar -czvf cmpt201_lab06_TH.tar.gz output.txt sec.c stats.c data.c makefile
+	tar -czvf cmpt201_lab06_TH.tar.gz output.txt sec.c stats.c data.c q4Input1.txt q4Input2.txt q4Input3.txt makefile

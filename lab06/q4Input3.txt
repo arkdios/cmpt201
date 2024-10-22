@@ -1,0 +1,3 @@
+station: 23
+pressure [kPa] : 99.4
+Temperature [C]: -0.5

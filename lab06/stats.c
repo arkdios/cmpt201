@@ -12,6 +12,12 @@
 # date: day, October th, 2024
 #-------------------------------------------------------------------------------
 */
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+#include<math.h>
+
 int stats(double*, int*, double*, double*, double*);
 
 int main(void){
