@@ -25,9 +25,11 @@ int main(void){
     //if this is false return 1
     //Initialize variables
     char fname[3][20] = {"q4Input1.txt","q4Input2.txt", "q4Input3.txt"}
-    int staNum; //Station number
-    double temper; //temperature 
-    double pressure; //pressure
+    int staNum[3][5]; //Station number
+    double tmpr[3][10]; //temperature 
+    double press[3][10]; //pressure
+
+
     int ret = 0; //error checker, if failed to load, ret = 1, otherwise it is 0
     int x; //close checker, 0 is closed, 1 is not
     
@@ -39,12 +41,14 @@ int main(void){
             printf("Could not open file: %s.\n", fname[i]);
 		    exit(EXIT_FAILURE);
         }
+        
+        
     }
     
     //testing
     for(int n = 0; n < 3; n++){
 
-        ret = loadData(char* fname[n], int* staNum, double* temper, double* pressure);
+        ret = loadData(char* fname[n], int* staNum, double* tmpr, double* press);
         if(ret == 1){
             printf("The function didn't work for %s\n", fname[n])
         }

@@ -21,7 +21,9 @@
 int stats(double*, int*, double*, double*, double*);
 
 int main(void){
-    double array[10] = {};
+    double arr1[20] = {89, 23, 45, 12, 32, 12, 13, 99, 123, 0};
+    double arr2[20] = {23, 1, 3,10};
+    double arr3[20] = {};
     stats(array, &n, &min, &mean, &max);
 
     return 0;
