@@ -24,11 +24,40 @@ int main(void){
     double arr1[20] = {89, 23, 45, 12, 32, 12, 13, 99, 123, 0};
     double arr2[20] = {23, 1, 3,10};
     double arr3[20] = {};
-    stats(array, &n, &min, &mean, &max);
 
-    return 0;
+    //Test case 1:
+    stats(arr1, &n, &min, &mean, &max);
+    if(ret == 1){
+        printf("The function did not work.\n");
+    }
+    else{
+        printf("Array 1 = {89, 23, 45, 12, 32, 12, 13, 99, 123, 0}  Min = %lf    Max = %lf    Mean = %lf", min, max, mean);
+    }
+
+    //Test case 1:
+    stats(arr2, &n, &min, &mean, &max);
+    if(ret == 1){
+        printf("The function did not work.\n");
+    }
+    else{
+        printf("Array 1 = {23, 1, 3,10}  Min = %lf    Max = %lf    Mean = %lf", min, max, mean);
+    }
+
+    //Test case 3:
+    stats(arr3, &n, &min, &mean, &max);
+    if(ret == 1){
+        printf("The function did not work.\n");
+    }
+    else{
+        printf("Array 3 = {}  Min = %lf    Max = %lf    Mean = %lf", min, max, mean);
+    }
+
+    exit(EXIT_SUCCESS);
 }
 
 int stats(double* array, int* n, double* min, double* mean, double* max){
 
+    
+
+    return 0
 }

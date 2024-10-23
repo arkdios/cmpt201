@@ -24,50 +24,89 @@ int main(void){
     //open file for reading
     //if this is false return 1
     //Initialize variables
-    char fname[3][20] = {"q4Input1.txt","q4Input2.txt", "q4Input3.txt"}
-    int staNum[3][5]; //Station number
-    double tmpr[3][10]; //temperature 
-    double press[3][10]; //pressure
-
+    char fname[3][20] = {"q4Input1.txt","q4Input2.txt", "q4Input3.txt"};
+    int staNum;//Station number
+    double temp, pres;
 
     int ret = 0; //error checker, if failed to load, ret = 1, otherwise it is 0
-    int x; //close checker, 0 is closed, 1 is not
     
-    //Open files
-    FILE *fp[3];
-    for(int i=0; i < 3; i++){
-        fp[i] = fopen(fname[i], "r");
-        if(fp[i] == NULL){
-            printf("Could not open file: %s.\n", fname[i]);
-		    exit(EXIT_FAILURE);
+    //Test case 1:
+    loadData(fname[0],&staNum, &temp,&pres);
+    if(ret == 1){
+        printf("The function didn't work for the file: %s\n", fname[0]);
         }
-        
-        
-    }
+    else{
+        printf("From %s: station = %i      pressure = %lf      temperature=%lf\n", fname[0], staNum, temp, pres);
+        }
+
+    //Test case 1:
+    loadData(fname[1],&staNum, &temp,&pres);
+    if(ret == 1){
+        printf("The function didn't work for the file: %s\n", fname[1]);
+        }
+    else{
+        printf("From %s: station = %i      pressure = %lf      temperature=%lf\n", fname[1], staNum, temp, pres);
+        }
     
-    //testing
-    for(int n = 0; n < 3; n++){
-
-        ret = loadData(char* fname[n], int* staNum, double* tmpr, double* press);
-        if(ret == 1){
-            printf("The function didn't work for %s\n", fname[n])
+    //Test case 3:
+    loadData(fname[2],&staNum, &temp,&pres);
+    if(ret == 1){
+        printf("The function didn't work for the file: %s\n", fname[2]);
         }
-        else{
-        printf("From %s: station = %i      pressure = %lf      temperature=%lf\n", fname[n], staNum, temper, pressure);
+    else{
+        printf("From %s: station = %i      pressure = %lf      temperature=%lf\n", fname[2], staNum, temp, pres);
         }
-    }
-
-    //closing files
-    for(int a = 0; a < 3; a++){
-        x = fclose(fp[a]);
-	    if(x!=0){
-		    printf("Could not close file: %s\n", fp[a]);
-		    exit(EXIT_FAILURE);
-    }
-
+    
     exit(EXIT_SUCCESS);
 }
 
 int loadData(char* filename, int* stationNumber, double* temp, double* pres){
+    int x = 0; //close checker, 0 is closed, 1 is not
+    int l = 0; //line counter
     
+    //Open files
+    FILE *fp;
+        fp = fopen(filename, "r");
+        if(fp == NULL){
+            printf("Could not open file: %s.\n", filename);
+		    exit(EXIT_FAILURE);
+        }
+        
+        char line[50]; //initialize line holder
+        char word[20]; //initialize word holder
+
+        while(strncmp(line, "station: ", 8) != 0 && l<1){
+            fgets(line, sizeof(line), fp);
+            l++;
+        }
+        sscanf("%s: %i", word, &stationNumber); //get the station number
+        
+        //reset
+        l = 0;
+        
+        while(strncmp(line, "pressure [kPa] : ", 16) != 0 && l<2){
+            fgets(line, sizeof(line), fp);
+            l++;
+        }
+        sscanf(line, "%s : %lf", word, &pres); //get the pressure
+        
+        //reset
+        l = 0;
+
+        while(strncmp(line, "Temperature [C]: ", 16) != 0 && l<3){
+            fgets(line, sizeof(line), fp);
+            l++;
+        }
+        sscanf(line, "%s: %lf", word, &temp); //get the temperature
+        
+        //reset
+        l = 0;
+
+    //closing files
+    x = fclose(fp);
+	if(x!=0){
+		printf("Could not close file: %s\n", filename);
+	    exit(EXIT_FAILURE);
+    return 0;
+    }
 }
