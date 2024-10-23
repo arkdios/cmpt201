@@ -25,16 +25,36 @@ int main(void){
     int hr, min, sec;
     int ret;
 
-    for(int i=0; i < 3; i++){
-        ret = sec2hms(&totalsec[i], &hr, &min, &sec);
-        if(ret == 1){
+    //Test case 1:
+    ret = sec2hms(&totalsec[0], &hr, &min, &sec);
+    if(ret == 1){
             printf("The function did not work.\n");
             //printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[i], hr, min, sec);
-        }
-        else{
-            printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[i], hr, min, sec);
-        }
     }
+    else{
+            printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[0], hr, min, sec);
+    }
+
+    //Test case 2:
+    ret = sec2hms(&totalsec[1], &hr, &min, &sec);
+    if(ret == 1){
+            printf("The function did not work.\n");
+            //printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[i], hr, min, sec);
+    }
+    else{
+            printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[1], hr, min, sec);
+    }
+
+    //Test case 3:
+    ret = sec2hms(&totalsec[2], &hr, &min, &sec);
+    if(ret == 1){
+            printf("The function did not work.\n");
+            //printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[i], hr, min, sec);
+    }
+    else{
+            printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[2], hr, min, sec);
+    }
+
     return 0;
 }
 
@@ -42,9 +62,6 @@ int sec2hms(double* totalsec, int* hr, int* min, int* sec){
     int total = *totalsec;
     
     if(total < 0){
-        *hr = 0;
-        *min = 0;
-        *sec = (int) total;
         return 1; //failure
     }
 
