@@ -29,27 +29,34 @@ int main(void){
     ret = sec2hms(&totalsec[0], &hr, &min, &sec);
     if(ret == 1){
             printf("The function did not work.\n");
-            //printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[i], hr, min, sec);
     }
     else{
             printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[0], hr, min, sec);
     }
 
+    //reset
+    hr = 0;
+    min = 0;
+    sec = 0;
+
     //Test case 2:
     ret = sec2hms(&totalsec[1], &hr, &min, &sec);
     if(ret == 1){
             printf("The function did not work.\n");
-            //printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[i], hr, min, sec);
     }
     else{
             printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[1], hr, min, sec);
     }
 
+    //reset
+    hr = 0;
+    min = 0;
+    sec = 0;
+
     //Test case 3:
     ret = sec2hms(&totalsec[2], &hr, &min, &sec);
     if(ret == 1){
             printf("The function did not work.\n");
-            //printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[i], hr, min, sec);
     }
     else{
             printf("totalSec= %.0f         hr= %i        min= %i       sec= %i\n", totalsec[2], hr, min, sec);
@@ -59,7 +66,7 @@ int main(void){
 }
 
 int sec2hms(double* totalsec, int* hr, int* min, int* sec){
-    int total = *totalsec;
+    double total = *totalsec;
     
     if(total < 0){
         return 1; //failure
@@ -68,20 +75,27 @@ int sec2hms(double* totalsec, int* hr, int* min, int* sec){
     else if(total< 60 && total >= 0){
         *hr = 0;
         *min = 0;
-        *sec = (int) total;
+        *sec = total;
     }
 
     else if(total < 3600 && total > 60){
         *hr = 0;
-        double x=*min;
-        *sec = (modf((total/60), &x))*60;
+        double x = *min;
+        total = total/60;
+        *sec = modf(total, &x)*60;
+        *min = x;
     }
 
     else if(total >= 3600){
-        double x = *min;
-        double y =*hr;
-        *min = (int) (modf((total/3600), &y))*60;
-        *sec = (int) (modf((total/60), &x))*60;
+        double x1 = *min;
+        double x2 = *min;
+        double y = *hr;
+        
+        total = total/3600;
+        x1 = modf(total, &y)*60;
+        *sec = modf(x1, &x2)*60;
+        *hr = y;
+        *min = x2;
     }
 
     return 0;

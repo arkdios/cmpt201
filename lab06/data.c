@@ -49,7 +49,7 @@ int main(void){
         }
     
     //Test case 3:
-    loadData(fname[2],&staNum, &temp,&pres);
+    loadData(fname[2],&staNum, &temp, &pres);
     if(ret == 1){
         printf("The function didn't work for the file: %s\n", fname[2]);
         }
@@ -78,10 +78,8 @@ int loadData(char* filename, int* stationNumber, double* temp, double* pres){
         while(strncmp(line, "station: ", 8) != 0 && l<1){
             fgets(line, sizeof(line), fp);
             l++;
-            //printf("%s\n", line);
         }
-        sscanf("%s: %i", word, *stationNumber); //get the station number
-        printf("%s\n%i\n", word, *stationNumber);
+        sscanf(line,"%s %i", word, stationNumber); //get the station number
         
         //reset
         l = 0;
@@ -89,10 +87,10 @@ int loadData(char* filename, int* stationNumber, double* temp, double* pres){
         while(strncmp(line, "pressure [kPa] : ", 16) != 0 && l<2){
             fgets(line, sizeof(line), fp);
             l++;
-            //printf("%s\n", line);
         }
-        sscanf(line, "%s : %lf", word, pres); //get the pressure
-        printf("%s\n%.1f\n", word, *pres);
+        printf("Line 2: %s\n", line);
+        sscanf(line, "%s %lf", word, pres); //get the pressure
+        printf("%s: %.1f\n", word, *pres);
 
         //reset
         l = 0;
@@ -101,8 +99,9 @@ int loadData(char* filename, int* stationNumber, double* temp, double* pres){
             fgets(line, sizeof(line), fp);
             l++;
         }
+        printf("Line 3: %s\n", line);
         sscanf(line, "%s: %lf", word, temp); //get the temperature
-        printf("%s\n%.1f\n", word, *temp);
+        printf("%s: %.1f\n", word, *temp);
 
         //reset
         l = 0;

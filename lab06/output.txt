@@ -1,27 +1,27 @@
 Code               | Question                  | Answer                  |
 -------------------------------------------------------------------------|
-char a = ’Q’;      | What does *ap contain?    | |
-int b;             | What does b contain ?     | |
+char a = ’Q’;      | What does *ap contain?    | 'Q'|
+int b;             | What does b contain ?     | ascii value of 'Q'|
 char* ap;          |                           | |
 ap = a;            |                           | |
 b = &a;            |                           | |
 -------------------------------------------------------------------------|
-char q[]="goose";  | *r contain [1st]?         | |
-char *r,*s;        | *s contain [1st]?         | |
+char q[]="goose";  | *r contain [1st]?         | 'g'|
+char *r,*s;        | *s contain [1st]?         | 'g'|
 r=&q[0];           |                           | |
-s=&q;              | *r contain [2nd]?         | |
-r++;               | *s contain [2nd]?         | |
+s=&q;              | *r contain [2nd]?         | 'o'|
+r++;               | *s contain [2nd]?         | 'o'|
 s+=2;              |                           | |
 -------------------------------------------------------------------------|
-double a = 3.14;   |Difference between *ap in  | |
-double b;          | "double *ap" and "b=*ap"? | |
+double a = 3.14;   |Difference between *ap in  | The first one was declaring|
+double b;          | "double *ap" and "b=*ap"? | The second one was dereferencing|
 double *ap;        |                           | |
-ap = &a;           | What doe the %p represent?| |
+ap = &a;           | What doe the %p represent?| The pointer|
 b = *ap;           |                           | |
 printf("%p\n",ap); |                           | |
 -------------------------------------------------------------------------|
-#define NUL ’\0’   | What is the difference    | |
-char a = NUL;      | between NUL and NULL?     | |
+#define NUL ’\0’   | What is the difference    |That is NUL represents '\0' for string|
+char a = NUL;      | between NUL and NULL?     | while NULL is the null value for pointer|
 char b = NULL;     |                           | |
-                   | Purpose of NULL?          | |
+                   | Purpose of NULL?          | Used for null pointer checking aka. error checking for pointer|
 -------------------------------------------------------------------------|

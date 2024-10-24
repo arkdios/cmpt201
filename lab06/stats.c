@@ -35,7 +35,7 @@ int main(void){
         printf("The function did not work for Array 1.\n");
     }
     else{
-        printf("Array 1 = {89, 23, 45, 12, 32, 12, 13, 99, 123, 0}  Min = %.0f    Max = %.0f    Mean = %.1f\n", min, max, mean);
+        printf("Array 1 = {89, 23, 45, 12, 32, 12, 13, 99, 123, 0}  Min = %.0f    Max = %.0f    Mean = %.0f\n", min, max, mean);
     }
 
     min = 999; max =0; mean =0;
@@ -46,7 +46,7 @@ int main(void){
         printf("The function did not work for Array 2.\n");
     }
     else{
-        printf("Array 1 = {23, 1, 3,10}  Min = %.0f    Max = %.0f    Mean = %.1f\n", min, max, mean);
+        printf("Array 1 = {23, 1, 3,10}  Min = %.0f    Max = %.0f    Mean = %.0f\n", min, max, mean);
     }
 
     min = 999; max =0; mean =0;
@@ -57,7 +57,7 @@ int main(void){
         printf("The function did not work for Array 3.\n");
     }
     else{
-        printf("Array 3 = {}  Min = %.0f    Max = %.0f    Mean = %.1f\n", min, max, mean);
+        printf("Array 3 = {}  Min = %.0f    Max = %.0f    Mean = %.0f\n", min, max, mean);
     }
 
     exit(EXIT_SUCCESS);
@@ -68,7 +68,6 @@ int stats(double* array, int* n, double* min, double* mean, double* max){
     int sum = 0; //Sum of the array
 
     if(*n < 1){
-        printf("abc\n");
         return 1;
     }
 
@@ -92,7 +91,6 @@ int stats(double* array, int* n, double* min, double* mean, double* max){
             sum += array[a];
         }
         *mean = sum/(*n);
-        printf("%i %i\n",sum, *n);
         return 0;
     }
 }

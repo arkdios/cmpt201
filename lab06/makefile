@@ -14,13 +14,13 @@
 CC=-gcc
 CFLAGS=-Wall -std=c11
 
-stats: stats.c
+stats: stats.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
-sec: sec.c
+sec: sec.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
-data: data.c
+data: data.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
 
