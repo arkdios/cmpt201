@@ -9,7 +9,7 @@
 # student ID: 3133630
 # class: CMPT 201 Section X03L
 # term: Fall 2024
-# date: day, October th, 2024
+# date: Thursday, October 24th, 2024
 #-------------------------------------------------------------------------------
 */
 #include<stdio.h>

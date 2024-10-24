@@ -9,7 +9,7 @@
 # student ID: 3133630
 # class: CMPT 201 Section X03L
 # term: Fall 2024
-# date: day, October th, 2024
+# date: Thursday, October 24th, 2024
 #-------------------------------------------------------------------------------
 */
 #include<stdio.h>
@@ -85,12 +85,11 @@ int loadData(char* filename, int* stationNumber, double* temp, double* pres){
         //reset
         l = 0;
         
-        while(strncmp(line, "pressure [kPa] : ", 16) != 0 && l<2){
+        while(strncmp(line, "pressure [kPa] :", 15) != 0 && l<2){
             fgets(line, sizeof(line), fp); //get the line from .txt file
             l++;
         }
-        sscanf(line, "%s %s %lf", word, spe, pres); //get the pressure
-        printf("%s %s : %.1f\n", word, spe, *pres);
+        sscanf(line, "%s %s : %lf", word, spe, pres); //get the pressure
 
         //reset
         l = 0;
