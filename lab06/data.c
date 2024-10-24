@@ -36,7 +36,7 @@ int main(void){
         printf("The function didn't work for the file: %s\n", fname[0]);
         }
     else{
-        printf("From %s: station = %i      pressure = %.1f      temperature=%.1f\n", fname[0], staNum, temp, pres);
+        printf("From %s: station = %i      pressure = %.1f      temperature=%.1f\n", fname[0], staNum, pres, temp);
         }
 
     //Test case 2:
@@ -45,7 +45,7 @@ int main(void){
         printf("The function didn't work for the file: %s\n", fname[1]);
         }
     else{
-        printf("From %s: station = %i      pressure = %.0f      temperature=%.0f\n", fname[1], staNum, temp, pres);
+        printf("From %s: station = %i      pressure = %.0f      temperature=%.0f\n", fname[1], staNum, pres, temp);
         }
     
     //Test case 3:
@@ -54,7 +54,7 @@ int main(void){
         printf("The function didn't work for the file: %s\n", fname[2]);
         }
     else{
-        printf("From %s: station = %i      pressure = %.1f      temperature=%.1f\n", fname[2], staNum, temp, pres);
+        printf("From %s: station = %i      pressure = %.1f      temperature=%.1f\n", fname[2], staNum, pres, temp);
         }
     
     exit(EXIT_SUCCESS);
@@ -74,9 +74,10 @@ int loadData(char* filename, int* stationNumber, double* temp, double* pres){
         
         char line[50]; //initialize line holder
         char word[20]; //initialize word holder
+        char spe[20]; //initialize char holder
 
         while(strncmp(line, "station: ", 8) != 0 && l<1){
-            fgets(line, sizeof(line), fp);
+            fgets(line, sizeof(line), fp); //get the line from .txt file
             l++;
         }
         sscanf(line,"%s %i", word, stationNumber); //get the station number
@@ -85,23 +86,20 @@ int loadData(char* filename, int* stationNumber, double* temp, double* pres){
         l = 0;
         
         while(strncmp(line, "pressure [kPa] : ", 16) != 0 && l<2){
-            fgets(line, sizeof(line), fp);
+            fgets(line, sizeof(line), fp); //get the line from .txt file
             l++;
         }
-        printf("Line 2: %s\n", line);
-        sscanf(line, "%s %lf", word, pres); //get the pressure
-        printf("%s: %.1f\n", word, *pres);
+        sscanf(line, "%s %s %lf", word, spe, pres); //get the pressure
+        printf("%s %s : %.1f\n", word, spe, *pres);
 
         //reset
         l = 0;
 
         while(strncmp(line, "Temperature [C]: ", 16) != 0 && l<3){
-            fgets(line, sizeof(line), fp);
+            fgets(line, sizeof(line), fp); //get the line from .txt file
             l++;
         }
-        printf("Line 3: %s\n", line);
-        sscanf(line, "%s: %lf", word, temp); //get the temperature
-        printf("%s: %.1f\n", word, *temp);
+        sscanf(line, "%s %s %lf", word, spe, temp); //get the temperature
 
         //reset
         l = 0;
